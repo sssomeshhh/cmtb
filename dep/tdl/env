@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MKA_ARG="" ;
+MKC_ARG="" ;
+INC_SRT="id/include/td" ;
+INC_SRC=("tl/TlObject.h" "telegram/Client.h" "telegram/Log.h" "telegram/td_api.h" "telegram/td_api.hpp") ;
+INC_DST=("tlObject.h" "tlClient.h" "tlLog.h" "tlApi.h" "tlApi.hpp") ;
+LIB_SRT="id/lib" ;
+LIB_SRC=("libtdactor.a" "libtdapi.a" "libtdclient.a" "libtdcore.a" "libtddb.a" "libtdnet.a" "libtdsqlite.a" "libtdutils.a") ;
+LIB_DST=("libtdactor.a" "libtdapi.a" "libtdclient.a" "libtdcore.a" "libtddb.a" "libtdnet.a" "libtdsqlite.a" "libtdutils.a") ;
