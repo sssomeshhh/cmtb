@@ -1,0 +1,12 @@
+[submodule "adl"]
+	path = dep/adl/sd
+	url = https://github.com/aria2/aria2.git
+[submodule "bit"]
+	path = dep/bit/sd
+	url = https://github.com/qbittorrent/qBittorrent.git
+[submodule "sdk"]
+	path = dep/sdk/sd
+	url = https://github.com/meganz/sdk.git
+[submodule "tdl"]
+	path = dep/tdl/sd
+	url = https://github.com/tdlib/td.git
