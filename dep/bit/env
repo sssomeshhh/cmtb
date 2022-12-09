@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MKA_ARG="" ;
+MKC_ARG="" ;
+INC_SRT="" ;
+INC_SRC=() ;
+INC_DST=() ;
+LIB_SRT="id/lib" ;
+LIB_SRC=("libqbt_base.a") ;
+LIB_DST=("libbit.a") ;
