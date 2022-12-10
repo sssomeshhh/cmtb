@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# shellcheck disable=SC2034
+
 MKA_ARG="--enable-libaria2 --enable-static" ;
 MKC_ARG="" ;
 INC_SRT="sd/src/includes/aria2" ;
