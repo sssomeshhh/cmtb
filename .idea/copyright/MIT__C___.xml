@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="//&#10;//-----------------------------------------------------------------------------&#10;//File `&amp;#36;file.fileName`&#10;//User `sssomeshhh`&#10;//Date `&amp;#36;today.format('yyyy MMM dd')`&#10;//Time `&amp;#36;today.format('HH:mm z')`&#10;//-----------------------------------------------------------------------------&#10;//&#10;//Copyright (c) &amp;#36;today.format('yyyy') SomesH S&#10;//&#10;//Distributed under the MIT License.&#10;//See LICENSE for more information.&#10;//" />
+    <option name="myName" value="MIT (C++)" />
+  </copyright>
+</component>
