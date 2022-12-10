@@ -1,5 +1,10 @@
-**-build-**
-**/bd/**
-**/id/**
-inc
-lib
+# CMake build directories
+/cmake-build-*/
+# Deps build artifacts
+/inc/
+/lib/
+# Deps build directories
+/dep/*/bd/
+/dep/*/id/
+# Deps build log
+/dep/log
