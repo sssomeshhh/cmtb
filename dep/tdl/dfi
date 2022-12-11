@@ -1,0 +1,40 @@
+diff --git a/tlApi.h b/tlApi.h
+index 7c2724d..bfca898 100644
+--- a/include/td/telegram/td_api.h
++++ b/include/td/telegram/td_api.h
+@@ -1,6 +1,6 @@
+ #pragma once
+ 
+-#include "td/tl/TlObject.h"
++#include "tlObject.h"
+ 
+ #include <string>
+ 
+diff --git a/tlApi.hpp b/tlApi.hpp
+index 7d93e0f..10bf751 100644
+--- a/include/td/telegram/td_api.hpp
++++ b/include/td/telegram/td_api.hpp
+@@ -5,7 +5,7 @@
+  * Contains downcast_call methods for calling a function object on downcasted to
+  * the most derived class TDLib API object.
+  */
+-#include "td_api.h"
++#include "tlApi.h"
+ 
+ namespace td {
+ namespace td_api {
+diff --git a/tlClient.h b/tlClient.h
+index 01dc8ac..982fdcd 100644
+--- a/include/td/telegram/Client.h
++++ b/include/td/telegram/Client.h
+@@ -8,8 +8,8 @@
+ 
+ ///\file
+ 
+-#include "td/telegram/td_api.h"
+-#include "td/telegram/td_api.hpp"
++#include "tlApi.h"
++#include "tlApi.hpp"
+ 
+ #include <cstdint>
+ #include <memory>
