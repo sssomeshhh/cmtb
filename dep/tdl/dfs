@@ -1,1 +1,22 @@
-
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc988205b..ad6ef5621 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,17 +72,6 @@ if (POLICY CMP0069)
+   endif()
+ endif()
+ 
+-# Configure CCache if available
+-find_program(CCACHE_FOUND ccache)
+-#set(CCACHE_FOUND 0)
+-if (CCACHE_FOUND)
+-  message(STATUS "Found ccache")
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+-else()
+-  message(STATUS "Could NOT find ccache (this is NOT an error)")
+-endif()
+-
+ set(MEMPROF "" CACHE STRING "Use one of \"ON\", \"FAST\" or \"SAFE\" to enable memory profiling. \
+ Works under macOS and Linux when compiled using glibc. \
+ In FAST mode stack is unwinded only using frame pointers, which may fail. \
