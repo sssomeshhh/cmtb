@@ -1,1 +1,46 @@
-
+diff --git a/configure.ac b/configure.ac
+index d7d3139cc..a8e919eef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,7 +28,7 @@ m4_include([m4/ax_check_compile_flag.m4])
+ m4_include([m4/ax_check_link_flag.m4])
+ m4_include([m4/ax_cxx_compile_stdcxx.m4])
+ 
+-AC_PREREQ([2.61])
++AC_PREREQ([2.71])
+ 
+ # The Mega SDK version number is generated into config.h.
+ # The version in Git should reflect the *next* version planned.
+@@ -50,8 +50,6 @@ AC_INIT([libmega], m4_esyscmd([ grep define < include/mega/version.h | awk '{pri
+ AC_PREFIX_DEFAULT([/])
+ 
+ # Define _GNU_SOURCE
+-# AC_GNU_SOURCE
+-AC_USE_SYSTEM_EXTENSIONS
+ 
+ AM_INIT_AUTOMAKE([1.11 foreign silent-rules])
+ AC_CONFIG_HEADERS([include/mega/config.h])
+@@ -90,7 +88,6 @@ if test "$CXX" = no || test "$CXX:$GXX" = "g++:"; then
+   AC_MSG_ERROR([C++ compiler not found !])
+ fi
+ 
+-AC_PROG_LIBTOOL
+ AM_SANITY_CHECK
+ 
+ # Check for cppcheck
+@@ -98,14 +95,12 @@ AC_CHECK_PROG(CPPCHECK, cppcheck, yes)
+ AM_CONDITIONAL(CPPCHECK, test -n "$CPPCHECK")
+ 
+ # set C++
+-AC_LANG_CPLUSPLUS
++AC_LANG([C++])
+ 
+ # Check for C++11 standard
+ AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory], [default])
+ 
+ # Check headers
+-AC_STDC_HEADERS
+-AC_HEADER_STDC
+ AC_HEADER_STDBOOL
+ AC_HEADER_DIRENT
+ 
