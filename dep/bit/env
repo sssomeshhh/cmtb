@@ -6,9 +6,9 @@ MKX="mkc"
 
 MKA_ARG="" ;
 MKC_ARG="" ;
-INC_SRT="" ;
-INC_FLS=() ;
-INC_DEP="" ;
+INC_SRT="id/inc" ;
+INC_FLS=("qbt_base.h") ;
+INC_DEP="bit.h" ;
 LIB_SRT="id/lib" ;
 LIB_FLS=("libqbt_base.a") ;
 LIB_DEP="libbit.a" ;
