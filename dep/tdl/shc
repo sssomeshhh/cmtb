@@ -6,10 +6,23 @@ source ./env ;
 
 # inc
 cd "$INC_SRT" || exit ;
-:
+touch "$INC_DEP" ;
+for inc in "${INC_FLS[@]}" ;
+do
+  printf '%s\n\n' "$(cat "$inc")" >> "$INC_DEP" ;
+done
 cd "$DRT" || exit ;
 
 # lib
 cd "$LIB_SRT" || exit ;
-:
+_MRI=".mri" ;
+touch "$_MRI" ;
+printf 'CREATE %s\n' "$LIB_DEP" >> "$_MRI" ;
+for lib in "${LIB_FLS[@]}" ;
+do
+  printf 'ADDLIB %s\n' "$lib" >> "$_MRI" ;
+done
+printf 'SAVE\nEND\n' >> "$_MRI" ;
+ar -M < "$_MRI" ;
+ar -s "$LIB_DEP" ;
 cd "$DRT" || exit ;

@@ -6,10 +6,10 @@ source ./env ;
 
 # inc
 cd "$INC_SRT" || exit ;
-:
+ln "${INC_FLS[0]}" "$INC_DEP" ;
 cd "$DRT" || exit ;
 
 # lib
 cd "$LIB_SRT" || exit ;
-:
+ln "${LIB_FLS[0]}" "$LIB_DEP" ;
 cd "$DRT" || exit ;
