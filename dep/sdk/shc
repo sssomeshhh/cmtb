@@ -1,3 +1,11 @@
 #!/bin/bash
 
 source ./env ;
+
+# inc
+cd "$INC_SRT" || exit ;
+:
+
+# lib
+cd "$LIB_SRT" || exit ;
+:
