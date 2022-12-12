@@ -1,40 +1,86 @@
-diff --git a/tlApi.h b/tlApi.h
-index 7c2724d..bfca898 100644
+diff --git a/include/td/telegram/Client.h b/include/td/telegram/Client.h
+index 01dc8ac..588b80a 100644
+--- a/include/td/telegram/Client.h
++++ b/include/td/telegram/Client.h
+@@ -1,15 +1,4 @@
+-//
+-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2022
+-//
+-// Distributed under the Boost Software License, Version 1.0. (See accompanying
+-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-//
+-#pragma once
+-
+-///\file
+-
+-#include "td/telegram/td_api.h"
+-#include "td/telegram/td_api.hpp"
++///\file `tlClient.h`
+ 
+ #include <cstdint>
+ #include <memory>
+diff --git a/include/td/telegram/Log.h b/include/td/telegram/Log.h
+index 7b6f066..0b6f8a4 100644
+--- a/include/td/telegram/Log.h
++++ b/include/td/telegram/Log.h
+@@ -1,13 +1,6 @@
+-//
+-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2022
+-//
+-// Distributed under the Boost Software License, Version 1.0. (See accompanying
+-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-//
+-#pragma once
++///\file `tlLog.h`
+ 
+ /**
+- * \file
+  * C++ interface for managing the internal logging of TDLib.
+  * By default TDLib writes logs to stderr or an OS specific log and uses a verbosity level of 5.
+  */
+diff --git a/include/td/telegram/td_api.h b/include/td/telegram/td_api.h
+index 7c2724d..142b149 100644
 --- a/include/td/telegram/td_api.h
 +++ b/include/td/telegram/td_api.h
-@@ -1,6 +1,6 @@
- #pragma once
- 
+@@ -1,6 +1,4 @@
+-#pragma once
+-
 -#include "td/tl/TlObject.h"
-+#include "tlObject.h"
++///\file `tlApi.h`
  
  #include <string>
  
-diff --git a/tlApi.hpp b/tlApi.hpp
-index 7d93e0f..10bf751 100644
+diff --git a/include/td/telegram/td_api.hpp b/include/td/telegram/td_api.hpp
+index 7d93e0f..a258b5a 100644
 --- a/include/td/telegram/td_api.hpp
 +++ b/include/td/telegram/td_api.hpp
-@@ -5,7 +5,7 @@
+@@ -1,11 +1,9 @@
+-#pragma once
++///\file `tlApi.hpp`
+ 
+ /**
+- * \file
   * Contains downcast_call methods for calling a function object on downcasted to
   * the most derived class TDLib API object.
   */
 -#include "td_api.h"
-+#include "tlApi.h"
  
  namespace td {
  namespace td_api {
-diff --git a/tlClient.h b/tlClient.h
-index 01dc8ac..982fdcd 100644
---- a/include/td/telegram/Client.h
-+++ b/include/td/telegram/Client.h
-@@ -8,8 +8,8 @@
+diff --git a/include/td/tl/TlObject.h b/include/td/tl/TlObject.h
+index 60671ec..9a427fb 100644
+--- a/include/td/tl/TlObject.h
++++ b/include/td/tl/TlObject.h
+@@ -4,10 +4,10 @@
+ // Distributed under the Boost Software License, Version 1.0. (See accompanying
+ // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+ //
+-#pragma once
++
++///\file `tlObject.h`
  
- ///\file
+ /**
+- * \file
+  * Contains the declarations of a base class for all TL-objects and some helper methods
+  */
  
--#include "td/telegram/td_api.h"
--#include "td/telegram/td_api.hpp"
-+#include "tlApi.h"
-+#include "tlApi.hpp"
- 
- #include <cstdint>
- #include <memory>
