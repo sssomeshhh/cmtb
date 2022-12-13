@@ -1,0 +1,217 @@
+#!/bin/bash
+
+PRJ_DIR="$(dirname -- "$(readlink -f "${BASH_SOURCE[0]}")")/.." ; # project directory path
+
+DEP="" ; # dep - current
+DEPS="" ; # dep - list
+
+BD="bd" ; # xd directories - build
+ID="id" ; # xd directories - install
+SD="sd" ; # xd directories - source
+
+GIT_F="$SD/.git" ; # .git file in submodules
+
+MKX="" ; # make - type
+
+MKA_ARG="" ; # make - autoconf args
+MKC_ARG="" ; # make - cmake args
+INC_SRT="" ; # include - source root path
+# shellcheck disable=SC2034
+INC_FLS=() ; # include - source files
+INC_DEP="" ; # include - dep file
+LIB_SRT="" ; # library - source root path
+# shellcheck disable=SC2034
+LIB_FLS=() ; # library - source files
+LIB_DEP="" ; # library - dep file
+
+MK_C_C=$CC ; # make - c - compiler
+MK_X_C=$CXX ; # make - cxx - compiler
+MK_C_F="-w" ; # make - c - flags
+MK_X_F="-w" ; # make - cxx - flags
+MK_C_L="ccache" ; # make - c - launcher
+MK_X_L="ccache" ; # make - cxx - launcher
+
+MKC_A_D="-S ../$SD -B ../$BD" ; # cmake args - xd directories
+MKC_A_G="-G Ninja" ; # cmake args - generator
+MKC_A_T="-DCMAKE_BUILD_TYPE=Release" ; # cmake args - build type
+MKC_A_P="-DCMAKE_INSTALL_PREFIX=../$ID" ; # cmake args - install prefix
+MKC_A_C="-DCMAKE_C_COMPILER=$MK_C_C -DCMAKE_CXX_COMPILER=$MK_X_C" ; # cmake args - lang compiler
+MKC_A_F="-DCMAKE_C_FLAGS=$MK_C_F -DCMAKE_CXX_FLAGS=$MK_X_F" ; # cmake args - lang flags
+MKC_A_L="-DCMAKE_C_COMPILER_LAUNCHER=$MK_C_L -DCMAKE_CXX_COMPILER_LAUNCHER=$MK_X_L" ; # cmake args - lang launcher
+
+MKA_ARG_="" ; # make - autoconf default args
+MKC_ARG_="$MKC_A_D $MKC_A_G $MKC_A_T $MKC_A_P $MKC_A_C $MKC_A_F $MKC_A_L" ; # make - cmake default args
+
+NPROC=$(nproc) ; # no of processors
+
+# clean build artifacts
+_cln_() {
+  cd "$PRJ_DIR" || exit ;
+  mkdir -p "$PRJ_DIR"/inc ;
+  rm -f inc/"$INC_DEP" ;
+  mkdir -p "$PRJ_DIR"/lib ;
+  rm -f lib/"$LIB_DEP" ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# diff apply - bd
+_dfb_() {
+  _dfx_ b $BD true ;
+}
+
+# diff apply - id
+_dfi_() {
+  _dfx_ i $ID false ;
+}
+
+# diff apply - sd
+_dfs_() {
+  _dfx_ s $SD true ;
+}
+
+# diff apply - xd
+_dfx_() {
+  _X=$1 ;
+  _XD=$2 ;
+  _IGR=$3 ; # is git root
+  cd "$PRJ_DIR"/dep/"$DEP"/"$_XD" || exit ;
+  if [ "$_IGR" != "true" ];
+  then
+    git init > /dev/null ;
+    git add . ;
+  fi
+  git apply --allow-empty "$PRJ_DIR"/dep/"$DEP"/df"$_X" ;
+  if [ "$_IGR" != "true" ] ;
+  then
+    rm -rf .git ;
+  fi
+  cd "$PRJ_DIR" || exit ;
+}
+
+# export variables
+_exv_() {
+  if [ "$MKX" == "mka" ];
+  then
+    export CC="$MK_C_L $MK_C_C" ;
+    export CXX="$MK_X_L $MK_X_C" ;
+    export CFLAGS=$MK_C_F ;
+    export CXXFLAGS=$MK_X_F ;
+  fi
+  if [ "$MKX" == "mkc" ];
+  then
+    export CC="$MK_C_C" ;
+    export CXX="$MK_X_C" ;
+    export CFLAGS=$MK_C_F ;
+    export CXXFLAGS=$MK_X_F ;
+  fi
+}
+
+# link hard
+_lnh_() {
+  cd "$PRJ_DIR" || exit ;
+  ln -v ./dep/"$DEP"/"$INC_SRT"/"$INC_DEP" ./inc/"$INC_DEP" ;
+  ln -v ./dep/"$DEP"/"$LIB_SRT"/"$LIB_DEP" ./lib/"$LIB_DEP" ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# make autoconf
+_mka_() {
+  cd "$PRJ_DIR"/dep/"$DEP" || exit ;
+  cd $SD || exit ;
+  autoreconf -fiv ;
+  # shellcheck disable=SC2086
+  ./configure $MKA_ARG_ $MKA_ARG ;
+  make -j "$NPROC" ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# make cmake
+_mkc_() {
+  cd "$PRJ_DIR"/dep/"$DEP" || exit ;
+  cd $SD || exit ;
+  # shellcheck disable=SC2086
+  cmake $MKC_ARG_ $MKC_ARG;
+  cmake --build ../$BD ;
+  cmake --install ../$BD ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# make xxxx
+_mkx_() {
+  if [ "$MKX" == "mka" ] ;
+  then
+    _mka_ ;
+  fi
+  if [ "$MKX" == "mkc" ] ;
+  then
+    _mkc_ ;
+  fi
+}
+
+# reset sd git
+_rst_() {
+  cd "$PRJ_DIR"/dep/"$DEP" || exit ;
+  GIT_C="$(cat $GIT_F)" ;
+  XDS="$BD $ID $SD" ;
+  for XD in $XDS
+  do
+    rm -rf "$XD" ;
+    mkdir "$XD" ;
+  done
+  echo "$GIT_C" > "$GIT_F" ;
+  cd $SD || exit ;
+  git reset HEAD --hard ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+_shc_() {
+  cd "$PRJ_DIR"/dep/"$DEP" || exit ;
+  ./shc ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# source env file
+_src_() {
+  cd "$PRJ_DIR"/dep/"$DEP" || exit ;
+  source ./env ;
+  cd "$PRJ_DIR" || exit ;
+}
+
+# top level main function
+__main__() {
+  DEPS=() ;
+  for dep in $1 ;
+  do
+    DEPS+=("$dep") ;
+    case $dep in
+      all) ;;
+      adl) ;;
+      bit) ;;
+      sdk) ;;
+      tdl) ;;
+      *) printf "Invalid Arg \`deps\`\nValid Arg [ \`all\` \`adl\` \`bit\` \`sdk\` \`tdl\` ]\n" && exit 1 ;;
+    esac
+  done
+  if [ "${DEPS[0]}" == "all" ] ;
+  then
+    DEPS=("adl" "bit" "sdk" "tdl") ;
+  fi
+  DEPS_S=""
+  for DEP in "${DEPS[@]}" ;
+  do
+    DEPS_S="$DEPS_S $DEP" ;
+  done
+  echo "# [ DEPS$DEPS_S ]" ;
+  for DEP in "${DEPS[@]}" ;
+  do
+    echo "# (dep) $DEP" ;
+    FNS=("src" "cln" "dfs" "exv" "mkx" "dfb" "dfi" "shc" "lnh" "rst") ;
+    for fn in "${FNS[@]}" ;
+    do
+      _"$fn"_ || exit ;
+    done
+  done
+}
+
+# main statement
+__main__ "$@" 2>&1 | tee "$PRJ_DIR"/dep/log ;
