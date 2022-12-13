@@ -5,6 +5,7 @@ DRT="$PWD" ; # dep root
 source ./env ;
 
 # inc
+mkdir "$INC_SRT" ; # tmp fix
 cd "$INC_SRT" || exit ;
 touch "${INC_FLS[0]}" ;
 ln "${INC_FLS[0]}" "$INC_DEP" ;
