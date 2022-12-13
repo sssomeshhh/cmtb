@@ -6,7 +6,7 @@ MKX="mkc"
 
 MKA_ARG="" ;
 MKC_ARG="" ;
-INC_SRT="id/inc" ;
+INC_SRT="id/include" ;
 INC_FLS=("qbt_base.h") ;
 INC_DEP="bit.h" ;
 LIB_SRT="id/lib" ;
