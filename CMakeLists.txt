@@ -10,6 +10,17 @@ project(
 
 set(CMAKE_CXX_STANDARD 20)
 
+# Configure CCache if available
+find_program(CCACHE_FOUND ccache)
+#set(CCACHE_FOUND 0)
+if (CCACHE_FOUND)
+        message(STATUS "Found - 'ccache'")
+        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+        set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+else()
+        message(STATUS "Not Found - 'ccache'")
+endif()
+
 add_executable(cmtb)
 
 target_sources(
