@@ -36,3 +36,12 @@ target_sources(
 
 target_include_directories(cmtb PRIVATE ${PROJECT_SOURCE_DIR}/inc)
 target_link_directories(cmtb PRIVATE ${PROJECT_SOURCE_DIR}/lib)
+target_link_libraries(cmtb PRIVATE
+        adl
+        cares gmp gnutls nettle sqlite3 ssh2 xml2 z
+        bit
+        torrent-rasterbar
+        sdk
+        cares crypto cryptopp curl dl freeimage sodium sqlite3 ssl stdc++fs rt z
+        tdl
+)
