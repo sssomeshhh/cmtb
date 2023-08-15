@@ -12,7 +12,7 @@
 // See LICENSE for more information.
 //
 
-#include "sdk.h"
+#include "sdk.hpp"
 
 namespace sdk {
 

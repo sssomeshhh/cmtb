@@ -12,7 +12,7 @@
 // See LICENSE for more information.
 //
 
-#include "bit.h"
+#include "bit.hpp"
 
 namespace bit {
 

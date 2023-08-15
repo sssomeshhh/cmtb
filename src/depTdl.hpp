@@ -12,7 +12,7 @@
 // See LICENSE for more information.
 //
 
-#include "tdl.h"
+#include "tdl.hpp"
 
 namespace tdl {
 
