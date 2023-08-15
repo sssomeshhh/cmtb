@@ -104,10 +104,10 @@ index a531f7fd1..37d346d40 100644
      install(FILES $<TARGET_PDB_FILE:qbt_app>
          DESTINATION ${CMAKE_INSTALL_BINDIR}
 diff --git a/src/base/CMakeLists.txt b/src/base/CMakeLists.txt
-index 115c61d67..0a4236735 100644
+index 15929773c..137a2c4a6 100644
 --- a/src/base/CMakeLists.txt
 +++ b/src/base/CMakeLists.txt
-@@ -195,6 +195,12 @@ target_link_libraries(qbt_base
+@@ -197,6 +197,12 @@ target_link_libraries(qbt_base
          qbt_common_cfg
  )
  
