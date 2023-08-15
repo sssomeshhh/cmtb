@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index d7d3139cc..a8e919eef 100644
+index fb23e4ff5..62801a21b 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -28,7 +28,7 @@ m4_include([m4/ax_check_compile_flag.m4])
