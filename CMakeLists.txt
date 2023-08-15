@@ -45,3 +45,5 @@ target_link_libraries(cmtb PRIVATE
         cares crypto cryptopp curl dl freeimage sodium sqlite3 ssl stdc++fs rt z
         tdl
 )
+add_compile_options("-stdlib=libc++")
+add_link_options("-fuse-ld=lld -flto")
