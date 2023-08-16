@@ -1,10 +1,10 @@
 diff --git a/include/td/telegram/Client.h b/include/td/telegram/Client.h
-index 01dc8ac..588b80a 100644
+index 2f2165e..d8dde48 100644
 --- a/include/td/telegram/Client.h
 +++ b/include/td/telegram/Client.h
 @@ -1,15 +1,4 @@
 -//
--// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2022
+-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2023
 -//
 -// Distributed under the Boost Software License, Version 1.0. (See accompanying
 -// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -20,12 +20,12 @@ index 01dc8ac..588b80a 100644
  #include <cstdint>
  #include <memory>
 diff --git a/include/td/telegram/Log.h b/include/td/telegram/Log.h
-index 7b6f066..0b6f8a4 100644
+index 9ad31da..0b6f8a4 100644
 --- a/include/td/telegram/Log.h
 +++ b/include/td/telegram/Log.h
 @@ -1,13 +1,6 @@
 -//
--// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2022
+-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2023
 -//
 -// Distributed under the Boost Software License, Version 1.0. (See accompanying
 -// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -39,7 +39,7 @@ index 7b6f066..0b6f8a4 100644
   * By default TDLib writes logs to stderr or an OS specific log and uses a verbosity level of 5.
   */
 diff --git a/include/td/telegram/td_api.h b/include/td/telegram/td_api.h
-index 7c2724d..142b149 100644
+index 0bc4191..e5e642d 100644
 --- a/include/td/telegram/td_api.h
 +++ b/include/td/telegram/td_api.h
 @@ -1,6 +1,4 @@
@@ -51,7 +51,7 @@ index 7c2724d..142b149 100644
  #include <string>
  
 diff --git a/include/td/telegram/td_api.hpp b/include/td/telegram/td_api.hpp
-index 7d93e0f..a258b5a 100644
+index d8eb82c..757d9d8 100644
 --- a/include/td/telegram/td_api.hpp
 +++ b/include/td/telegram/td_api.hpp
 @@ -1,11 +1,9 @@
@@ -68,7 +68,7 @@ index 7d93e0f..a258b5a 100644
  namespace td {
  namespace td_api {
 diff --git a/include/td/tl/TlObject.h b/include/td/tl/TlObject.h
-index 60671ec..9a427fb 100644
+index c83e40a..15eeeac 100644
 --- a/include/td/tl/TlObject.h
 +++ b/include/td/tl/TlObject.h
 @@ -4,10 +4,10 @@
