@@ -75,7 +75,7 @@ _dfx_() {
   _XD=$2 ;
   _IGR=$3 ; # is git root
   cd "$PRJ_DIR"/dep/"$DEP"/"$_XD" || exit ;
-  if [ "$_IGR" != "true" ];
+  if [ "$_IGR" != "true" ] ;
   then
     git init > /dev/null ;
     git add . ;

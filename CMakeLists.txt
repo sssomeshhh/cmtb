@@ -6,7 +6,7 @@ project(
         HOMEPAGE_URL https://github.com/sssomeshhh/cmtb
         LANGUAGES C CXX
         VERSION 0.0.0.1
-        )
+)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -32,7 +32,7 @@ target_sources(
         src/depBit.hpp src/depBit.cpp
         src/depSdk.hpp src/depSdk.cpp
         src/depTdl.hpp src/depTdl.cpp
-        )
+)
 
 target_include_directories(cmtb PRIVATE ${PROJECT_SOURCE_DIR}/inc)
 target_link_directories(cmtb PRIVATE ${PROJECT_SOURCE_DIR}/lib)
