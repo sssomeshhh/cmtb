@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dc988205b..ad6ef5621 100644
+index 450f07447..d6793e372 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -72,17 +72,6 @@ if (POLICY CMP0069)
